@@ -1,0 +1,39 @@
+{
+  "id":"My PWA",
+  "start_url": "index.html",
+  "short_name": "PWA TEMPLATE",
+  "name": "PWA TEMPLATE",
+  "orientation": "portrait-primary",
+  "display": "standalone",
+  "background_color": "#ad1400",
+  "theme_color": "#ad1400",
+  "lang": "es",
+  "description": "Esta es una descripción de lo que hace la WebApp.",
+  "display_override":["window-controls-overlay"],
+  "screenshots":[
+    {
+      "src": "img/icons/icon192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    }
+  ],
+  "icons": [{
+    "src": "img/icons/icon192.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }, {
+    "src": "img/icons/icon196.png",
+    "type": "image/png",
+    "sizes": "196x196"
+  }, {
+    "src": "img/icons/icon256.png",
+    "type": "image/png",
+    "sizes": "256x256"
+  }, {
+    "src": "img/icons/icon512.png",
+    "type": "image/png",
+    "sizes": "512x512",
+    "purpose": "maskable"
+  }]
+}
