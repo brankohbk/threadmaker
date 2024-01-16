@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Branko Haberkon" />
     <meta name="copyright" content="Branko Haberkon" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>&#120143; Post Clipper</title>
 
     <!--#region Make it a PWA.  -->
@@ -22,20 +22,91 @@
     <link rel="manifest" href="manifest.json">
     -->
     <!--#endregion -->
-    
-    
-    
+
+    <link rel="stylesheet" href="./assets/styles/reset.css" />
     <link rel="stylesheet" href="./assets/styles/custom.css" />
   </head>
   <body>
     <header>
       <nav>
-        <img src="" alt="">
+        <img src="" alt="" />
       </nav>
     </header>
-    <main></main>
+    <main>
+      <h1>Post Clipper for 𝕏</h1>
+
+      <form>
+        <fieldset>
+          <legend>Post</legend>
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Enter your post here"
+          ></textarea>
+        </fieldset>
+        <fieldset>
+          <legend>Trail</legend>
+          <label>
+            <input type="radio" name="trail" value="👇🏼" checked />
+            <span>👇🏼</span>
+          </label>
+          <label>
+            <input type="radio" name="trail" value="..." />
+            <span>...</span>
+          </label>
+          <label>
+            <input type="radio" name="trail" value="(next)" />
+            <span>(next)</span>
+          </label>
+          <label>
+            <input type="radio" name="trail" id="paginator" />
+            <span>X/Y</span>
+          </label>
+          <label>
+            <input type="radio" name="trail" id="custom" />
+            <input
+              type="text"
+              name="trail"
+              id="custom_text"
+              placeholder="Custom trail"
+            />
+          </label>
+        </fieldset>
+
+        <button>Clip ✂</button>
+      </form>
+
+      <section>
+        <h2>Output</h2>
+        <div id="output-container">
+          <details name="output" open>
+            <summary> 1/3 </summary>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum odit quo recusandae ipsa tenetur. Quibusdam earum praesentium voluptates debitis itaque vero ad officia ratione. Tempore est odit quam natus libero.</p>
+          </details>
+          <details name="output">
+            <summary> 2/3 </summary>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum odit quo recusandae ipsa tenetur. Quibusdam earum praesentium voluptates debitis itaque vero ad officia ratione. Tempore est odit quam natus libero.</p>
+          </details>
+          <details name="output">
+            <summary> 3/3 </summary>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum odit quo recusandae ipsa tenetur. Quibusdam earum praesentium voluptates debitis itaque vero ad officia ratione. Tempore est odit quam natus libero.</p>
+          </details>
+        </div>
+      </section>
+    </main>
     <footer>
-      
+      <p>Branko - 2024</p>
+      <p>
+        Liked it? Drop a ⭐ on
+        <a
+          href="https://github.com/brankohbk/postclipper"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Github</a
+        >
+      </p>
     </footer>
     <script src="./pwa.js"></script>
     <script src="./service-worker.js"></script>
