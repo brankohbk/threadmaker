@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>Artboard</dc:title>
+        <dc:title>Cortado</dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -47,15 +47,15 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="Artboard"
+     inkscape:current-layer="Cortado"
      inkscape:document-rotation="0" />
   <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
   <title
-     id="title2">Artboard</title>
+     id="title2">Cortado</title>
   <desc
-     id="desc4">Created with Sketch.</desc>
+     id="desc4">Created by Branko.</desc>
   <g
-     id="Artboard"
+     id="Cortado"
      stroke="none"
      stroke-width="1"
      fill="none"
