@@ -39,12 +39,19 @@
         <fieldset>
           <legend>Post</legend>
           <textarea
-            name=""
-            id=""
+            name="post"
+            id="post_input"
             cols="30"
             rows="10"
             placeholder="Enter your post here"
           ></textarea>
+          <section>
+            <h3>Brief preview:</h3>
+            <p>Char count: <span id="char_count">0</span></p>
+            <p>Trail length: <span id="trail_length">0</span></p>
+            <p>Estimated posts: <span id="estimated_posts">0</span></p>
+            
+          </section>
         </fieldset>
         <fieldset>
           <legend>Trail</legend>
@@ -61,16 +68,17 @@
             <span>(next)</span>
           </label>
           <label>
-            <input type="radio" name="trail" id="paginator" />
+            <input type="radio" name="trail" id="paginator" value="00/00"/>
             <span>X/Y</span>
           </label>
           <label>
             <input type="radio" name="trail" id="custom" />
+            <span>Custom</span>
             <input
               type="text"
-              name="trail"
               id="custom_text"
               placeholder="Custom trail"
+              disabled
             />
           </label>
         </fieldset>
@@ -108,8 +116,8 @@
         >
       </p>
     </footer>
-    <script src="./pwa.js"></script>
-    <script src="./service-worker.js"></script>
+    <!-- <script src="./pwa.js"></script> -->
+    <!-- <script src="./service-worker.js"></script> -->
     <script src="./scripts/main.js"></script>
   </body>
 </html>
