@@ -4,10 +4,10 @@ const COUNT_SPAN = document.getElementById("char_count")
 const ESTIMATED_SPAN = document.getElementById("estimated_posts")
 const TRAIL_SPAN = document.getElementById("trail_length")
 let trailLength = TRAIL_OPTIONS.filter(option => option.checked)[0].value.length
-TRAIL_SPAN.innerText=trailLength
-  
+TRAIL_SPAN.innerText = trailLength
 
-Array.from(FORM.elements).forEach((element)=>{
+
+Array.from(FORM.elements).forEach((element) => {
   element.addEventListener('input', handleInput)
 })
 
@@ -17,12 +17,12 @@ function handleInput() {
   let text = FORM.elements["post_input"].value
   FORM.elements["custom"].value = FORM.elements["custom_text"].value
   trailLength = checkedOption.value.length
-  TRAIL_SPAN.innerText=trailLength
-  COUNT_SPAN.innerText= text.length
-  ESTIMATED_SPAN.innerText= Math.ceil(text.length / (280 - trailLength))
+  TRAIL_SPAN.innerText = trailLength
+  COUNT_SPAN.innerText = text.length
+  ESTIMATED_SPAN.innerText = Math.ceil(text.length / (280 - trailLength))
 }
 
-FORM.onsubmit = (event)=>{
+FORM.onsubmit = (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const formProps = Object.fromEntries(formData);
@@ -31,14 +31,25 @@ FORM.onsubmit = (event)=>{
 
 function clip(data) {
 
-  console.log(data)
-  // Get the trail
-  
+  let { post: fullPost, trail } = data
+  // Get the trail  
   // Get trail length
-
   // Count characters on post text
-
   // Divide post.length by (280 - trail.length)
+  const POST_LENGTH = 280 - trail.length
+  const ESTIMATED_POSTS = Math.ceil(fullPost.length / POST_LENGTH)
+  let individualPosts = []
+  
+  for (let index = 0; index < ESTIMATED_POSTS; index++) {
+    let start = index * POST_LENGTH
+    individualPosts.push(fullPost.substring(start,start+POST_LENGTH))    
+  }
+  
+
+  console.log(fullPost, trail, individualPosts)
+
+
+
 
   // Split text at same length and add trail (except for the last item)
 
@@ -46,7 +57,7 @@ function clip(data) {
 
 }
 
-function createIndividualPost(text){
+function createIndividualPost(text) {
   // Create <p> 
 
   // Insert text
@@ -56,7 +67,7 @@ function createIndividualPost(text){
   // Add eventListener to copy to clipboard when clicked
 }
 
-function copyPost(){
+function copyPost() {
   // TO HANDLE CLICK 
   // Copy <p> text to clipboard
 
