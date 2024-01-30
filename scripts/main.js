@@ -1,78 +1,121 @@
 const FORM = document.querySelector("form")
+const OUTPUT = document.getElementById("output-container")
 const TRAIL_OPTIONS = Array.from(document.querySelectorAll('[name="trail"]'))
 const COUNT_SPAN = document.getElementById("char_count")
 const ESTIMATED_SPAN = document.getElementById("estimated_posts")
 const TRAIL_SPAN = document.getElementById("trail_length")
-let trailLength = TRAIL_OPTIONS.filter(option => option.checked)[0].value.length
-TRAIL_SPAN.innerText = trailLength
+const MAX_POST_LENGTH = 280 // Set by X.com https://help.twitter.com/en/using-x/how-to-post
+let trailLength = 0
 
-
+//#region Event Listeners
 Array.from(FORM.elements).forEach((element) => {
   element.addEventListener('input', handleInput)
 })
 
+FORM.addEventListener('submit', (event) => { handleSubmit(event) })
+
+OUTPUT.addEventListener('click', (event) => { copyPost(event.target) })
+//#endregion
+
+//#region Event Handlers
 function handleInput() {
   let checkedOption = TRAIL_OPTIONS.filter(op => op.checked)[0]
   checkedOption == FORM.elements["custom"] ? FORM.elements["custom_text"].disabled = false : FORM.elements["custom_text"].disabled = true
   let text = FORM.elements["post_input"].value
   FORM.elements["custom"].value = FORM.elements["custom_text"].value
-  trailLength = checkedOption.value.length
+  trailLength = checkedOption.value.length + 1
   TRAIL_SPAN.innerText = trailLength
   COUNT_SPAN.innerText = text.length
   ESTIMATED_SPAN.innerText = Math.ceil(text.length / (280 - trailLength))
 }
 
-FORM.onsubmit = (event) => {
+function handleSubmit(event) {
   event.preventDefault();
+  OUTPUT.innerHTML = ""
   const formData = new FormData(event.target);
   const formProps = Object.fromEntries(formData);
-  clip(formProps)
+  thread(formProps)
 }
 
-function clip(data) {
+function copyPost(element) {
+  // If not a post, do nothing.
+  if (!element.classList.contains("single-post")) { return }
 
-  let { post: fullPost, trail } = data
-  // Get the trail  
-  // Get trail length
-  // Count characters on post text
-  // Divide post.length by (280 - trail.length)
-  const POST_LENGTH = 280 - trail.length
-  const ESTIMATED_POSTS = Math.ceil(fullPost.length / POST_LENGTH)
-  let individualPosts = []
-  
-  for (let index = 0; index < ESTIMATED_POSTS; index++) {
-    let start = index * POST_LENGTH
-    individualPosts.push(fullPost.substring(start,start+POST_LENGTH))    
+  // Copy <p> text to clipboard
+  writeClipboardText(element.innerText)
+
+  // Set class to copied. 
+  element.classList.remove("pasted")
+  element.classList.add("copied")
+
+  // When copying a new <p>, the previous ones should have a "pasted" class.
+  getSiblings(element).forEach((sibling) => {
+    if (sibling.classList.contains("copied")) {
+      sibling.classList.remove("copied")
+      sibling.classList.add("pasted")
+    }
+  })
+}
+//#endregion
+
+//#region Auxiliary Functions
+function getSiblings(element) {
+  // For collecting siblings
+  let siblings = [];
+  if (!element.parentNode) { return siblings }
+  let sibling = element.parentNode.firstChild
+
+  // Collecting siblings
+  while (sibling) {
+    if (sibling.nodeType === 1 && sibling !== element) {
+      siblings.push(sibling)
+    }
+    sibling = sibling.nextSibling
   }
-  
+  return siblings
+}
 
-  console.log(fullPost, trail, individualPosts)
-
-
-
-
-  // Split text at same length and add trail (except for the last item)
-
-  // Call function to create paragraphs with each Item
-
+async function writeClipboardText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (error) {
+    console.error(error.message);
+  }
 }
 
 function createIndividualPost(text) {
-  // Create <p> 
-
-  // Insert text
-
-  // Insert <p> into DOM
-
-  // Add eventListener to copy to clipboard when clicked
+  const POST = document.createElement("p")
+  POST.classList.add("single-post")
+  POST.innerText = text
+  OUTPUT.appendChild(POST)
 }
+//#endregion
 
-function copyPost() {
-  // TO HANDLE CLICK 
-  // Copy <p> text to clipboard
+//#region Main Function
+function thread(data) {
+  let { post: fullPost, trail } = data
+  // Get the trail, trail length, post length.
+  // Divide post.length by (MAX_POST_LENGTH - trail.length)
 
-  // Set state to copied. If copied backgruond should be green
+  const POST_LENGTH = MAX_POST_LENGTH - (1 + trail.length)
+  const ESTIMATED_POSTS = Math.ceil(fullPost.length / POST_LENGTH)
+  let individualPosts = []
 
-  // When copying a new <p>, the previous one should have a "pasted" state. Change bg to gray
+  for (let index = 0; index < ESTIMATED_POSTS; index++) {
+    // Split text at same length 
+    let start = index * POST_LENGTH
+    let end = start + POST_LENGTH
+    let individualPost = fullPost.substring(start, end)
+
+    // Add trail (except for the last item)
+    if (index != (ESTIMATED_POSTS - 1)) { individualPost += " " + trail }
+
+    individualPosts.push(individualPost)
+  }
+
+  // Call function to create paragraphs with each Item
+  individualPosts.forEach((post) => { createIndividualPost(post) })
 }
+//#endregion
 
+handleInput()
