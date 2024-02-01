@@ -1,9 +1,43 @@
-body{
+@font-face{
+  src: url('..\\fonts\\Poppins\\Poppins-Regular.ttf');
+  font-family: "Poppins";
+}
+
+body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: Poppins;
 }
 
-main{
+main {
   flex-grow: 1;
 }
+
+h1{
+  font-size: 2rem;
+}
+
+
+.single-post {
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.copied {
+  background-color: rgba(82, 175, 6, 0.558);
+}
+
+.pasted {
+  background-color: rgba(118, 119, 118, 0.558);
+}
+
+input#custom_text {
+  width: 15ch;
+  transition: width 0.6s ease;
+}
+
+input#custom_text:disabled {
+  width: 0;
+}
+
