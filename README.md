@@ -16,7 +16,11 @@ Whatever the case, this tool could help you.
 
 ## How?
 
-Start typing your post in the text area, select if you want any separator (or trail) to indicate this is a thread. You can choose one from the predefined pool or add a custom one.
+Start typing your post in the text area, select if you want any separator (or trail) to indicate this is a thread. You can choose one from the predefined pool or add a custom one. Then click the "Thread 🧵" button.
+
+In the output section you will see the original text splitted.
+
+By clicking on a paragraph it will be copied to the clipboard. Just go to 𝕏 and paste the text to post it. 
 
 ## Official solution as for September 2023
 
