@@ -26,36 +26,40 @@
     <link rel="stylesheet" href="./assets/styles/reset.css" />
     <link rel="stylesheet" href="./assets/styles/custom.css" />
   </head>
+
   <body>
     <header>
       <nav>
         <img src="" alt="" />
       </nav>
+      <h1>Thread Maker for 𝕏</h1>
     </header>
     <main>
-      <h1>Thread Maker for 𝕏</h1>
 
       <form>
         <fieldset>
           <legend>Post</legend>
-          <textarea
-            name="post"
-            id="post_input"
-            cols="30"
-            rows="10"
-            placeholder="Enter your post here"
-            required
-          ></textarea>
           <section>
-            <h3>Brief preview:</h3>
+            <h3>Original text:</h3>
+            <textarea
+              name="post"
+              id="post_input"
+              cols="30"
+              rows="10"
+              placeholder="Enter your post here"
+              required
+            ></textarea>
+          </section>
+          <section>
+            
+            <h3>Stats:</h3>
             <p>Char count: <span id="char_count">0</span></p>
             <p>Trail length: <span id="trail_length">0</span></p>
             <p>Estimated posts: <span id="estimated_posts">0</span></p>
-            
           </section>
         </fieldset>
         <fieldset>
-          <legend>Trail</legend>
+          <legend>Trail <span title="Select the text that will be added at the end of each clipped post.">❓</span></legend>
           <label>
             <input type="radio" name="trail" value="👇🏼" checked />
             <span>👇🏼</span>
@@ -69,7 +73,7 @@
             <span>(next)</span>
           </label>
           <label>
-            <input type="radio" name="trail" id="paginator" value="00/00"/>
+            <input type="radio" name="trail" id="paginator" value="00/00" />
             <span>X/Y</span>
           </label>
           <label>
@@ -89,8 +93,7 @@
 
       <section>
         <h2>Output</h2>
-        <div id="output-container">
-        </div>
+        <div id="output-container"></div>
       </section>
     </main>
     <footer>

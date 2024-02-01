@@ -3,7 +3,12 @@
   font-family: "Poppins";
 }
 
+:root{
+  --bg-color: #FFFFFFFF
+}
+
 body {
+  background-color: var(--bg-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,11 +17,71 @@ body {
 
 main {
   flex-grow: 1;
+  /* width: 50vw; */
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 1.5rem;
 }
 
 h1{
   font-size: 2rem;
 }
+
+/* Input form */
+form{
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+}
+fieldset{
+  position: relative;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+legend{
+  position: absolute;
+  top: -.75rem;
+  left: 1rem;
+  background-color: var(--bg-color);
+  padding: 0 .25rem;
+  user-select: none;
+}
+legend>span{
+  cursor: pointer;
+}
+
+textarea{
+  background-color: var(--bg-color);
+  height: fit-content;
+
+}
+
+
+label{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  flex-grow: 1;
+  padding: .5rem 1rem;
+  margin: auto;
+  box-shadow: 1px 1px 1px 1px black;
+}
+
+input[type="radio"]{
+  display: none;
+}
+label:has(input[type="radio"]:checked){
+  background-color: red;
+  box-shadow: inset 1px 1px 1px 1px black;
+}
+
+
 
 
 .single-post {
@@ -35,9 +100,14 @@ h1{
 input#custom_text {
   width: 15ch;
   transition: width 0.6s ease;
+  margin: 0 0 0 1ch;
 }
 
 input#custom_text:disabled {
   width: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+
 }
 
