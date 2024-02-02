@@ -1,3 +1,5 @@
+// import Toastify from './toastify.js'
+
 const FORM = document.querySelector("form");
 const OUTPUT = document.getElementById("output-container");
 const TRAIL_OPTIONS = Array.from(document.querySelectorAll('[name="trail"]'));
@@ -88,8 +90,23 @@ function getSiblings(element) {
 async function writeClipboardText(text) {
   try {
     await navigator.clipboard.writeText(text);
+    Toastify({
+      text: "Copied to clipboard",
+      gravity: "bottom",
+      position: "right"
+    }).showToast()
   } catch (error) {
     console.error(error.message);
+    Toastify({
+      text: `Cannot copy to clipboard.\nError: ${error.message}`,
+      duration: -1,
+      gravity: "top",
+      position: "center",
+      close: true,
+      style: {
+        background: "red",
+      },
+    }).showToast();
   }
 }
 

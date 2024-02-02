@@ -22,7 +22,7 @@
     <link rel="manifest" href="manifest.json">
     -->
     <!--#endregion -->
-
+    <link rel="stylesheet" href="./assets/styles/toastify.css" />
     <link rel="stylesheet" href="./assets/styles/reset.css" />
     <link rel="stylesheet" href="./assets/styles/custom.css" />
   </head>
@@ -35,7 +35,6 @@
       <h1>Thread Maker for 𝕏</h1>
     </header>
     <main>
-
       <form>
         <fieldset>
           <legend>Post</legend>
@@ -50,7 +49,7 @@
               required
             ></textarea>
           </section>
-          <section>            
+          <section>
             <h3>Stats:</h3>
             <p>Char count: <span id="char_count">0</span></p>
             <p>Trail length: <span id="trail_length">0</span></p>
@@ -58,7 +57,13 @@
           </section>
         </fieldset>
         <fieldset>
-          <legend>Trail <span title="Select the text that will be added at the end of each clipped post.">❓</span></legend>
+          <legend>
+            Trail
+            <span
+              title="Select the text that will be added at the end of each clipped post."
+              >❓
+            </span>
+          </legend>
           <label aria-roledescription="button" role="button">
             <input type="radio" name="trail" value="👇🏼" checked />
             <span>👇🏼</span>
@@ -86,7 +91,6 @@
             />
           </label>
         </fieldset>
-
         <button>Thread 🧵</button>
       </form>
 
@@ -97,23 +101,23 @@
     </main>
     <footer>
       <span>Branko HBK</span>
-        <span>| 2024 |</span>
+      <span>| 2024 |</span>
       <span>
-        
-        Liked it? 
+        Liked it?
         <span>
           ⭐ on
           <a
-          href="https://github.com/brankohbk/postclipper"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Github</a
+            href="https://github.com/brankohbk/postclipper"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Github</a
           >
         </span>
       </span>
     </footer>
     <!-- <script src="./pwa.js"></script> -->
     <!-- <script src="./service-worker.js"></script> -->
+    <script src="./scripts/toastify.js"></script>
     <script src="./scripts/main.js"></script>
   </body>
 </html>

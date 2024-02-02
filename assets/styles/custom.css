@@ -63,6 +63,7 @@ textarea {
   background-color: var(--bg-color);
   width: 100%;
   max-width: 40ch;
+  resize: none;
 }
 
 label {
@@ -88,6 +89,8 @@ label:has(input[type="radio"]:checked) {
 .single-post {
   padding: 1rem;
   border: 1px solid black;
+  cursor: pointer;
+  user-select: none;
 }
 
 .copied {
@@ -97,7 +100,7 @@ label:has(input[type="radio"]:checked) {
 .pasted {
   background-color: rgba(118, 119, 118, 0.558);
 }
-label:has(input#custom_text){
+label:has(input#custom_text) {
   display: flex;
   flex-wrap: wrap;
 }
@@ -114,9 +117,11 @@ input#custom_text:disabled {
   margin: 0;
 }
 
-form > button{
+form > button {
   padding: 1rem;
   font-weight: 900;
+  cursor: pointer;
+  user-select: none;
 }
 
 /* FOOTER */
@@ -131,11 +136,10 @@ footer {
   background-color: rgb(36, 150, 244);
 }
 
-footer > *{
+footer > * {
   margin: 0;
   flex-grow: 1;
   text-align: center;
   display: grid;
   align-items: center;
 }
-
