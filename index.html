@@ -50,8 +50,7 @@
               required
             ></textarea>
           </section>
-          <section>
-            
+          <section>            
             <h3>Stats:</h3>
             <p>Char count: <span id="char_count">0</span></p>
             <p>Trail length: <span id="trail_length">0</span></p>
@@ -60,23 +59,23 @@
         </fieldset>
         <fieldset>
           <legend>Trail <span title="Select the text that will be added at the end of each clipped post.">❓</span></legend>
-          <label>
+          <label aria-roledescription="button" role="button">
             <input type="radio" name="trail" value="👇🏼" checked />
             <span>👇🏼</span>
           </label>
-          <label>
+          <label aria-roledescription="button" role="button">
             <input type="radio" name="trail" value="..." />
             <span>...</span>
           </label>
-          <label>
+          <label aria-roledescription="button" role="button">
             <input type="radio" name="trail" value="(next)" />
             <span>(next)</span>
           </label>
-          <label>
+          <label aria-roledescription="button" role="button">
             <input type="radio" name="trail" id="paginator" value="00/00" />
             <span>X/Y</span>
           </label>
-          <label>
+          <label aria-roledescription="button" role="button">
             <input type="radio" name="trail" id="custom" />
             <span>Custom</span>
             <input
@@ -97,16 +96,21 @@
       </section>
     </main>
     <footer>
-      <p>Branko - 2024</p>
-      <p>
-        Liked it? Drop a ⭐ on
-        <a
+      <span>Branko HBK</span>
+        <span>| 2024 |</span>
+      <span>
+        
+        Liked it? 
+        <span>
+          ⭐ on
+          <a
           href="https://github.com/brankohbk/postclipper"
           target="_blank"
           rel="noopener noreferrer"
           >Github</a
-        >
-      </p>
+          >
+        </span>
+      </span>
     </footer>
     <!-- <script src="./pwa.js"></script> -->
     <!-- <script src="./service-worker.js"></script> -->

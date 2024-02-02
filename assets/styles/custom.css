@@ -1,10 +1,10 @@
-@font-face{
-  src: url('..\\fonts\\Poppins\\Poppins-Regular.ttf');
+@font-face {
+  src: url("..\\fonts\\Poppins\\Poppins-Regular.ttf");
   font-family: "Poppins";
 }
 
-:root{
-  --bg-color: #FFFFFFFF
+:root {
+  --bg-color: #ffffffff;
 }
 
 body {
@@ -17,72 +17,71 @@ body {
 
 main {
   flex-grow: 1;
-  /* width: 50vw; */
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
   padding: 1.5rem;
 }
 
-h1{
+h1 {
   font-size: 2rem;
 }
 
 /* Input form */
-form{
+form {
   width: 100%;
   display: grid;
   gap: 1rem;
 }
-fieldset{
+fieldset {
   position: relative;
   padding: 2rem;
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
+  flex-wrap: wrap;
+}
+fieldset > section {
+  flex-grow: 1;
 }
 
-legend{
+legend {
   position: absolute;
-  top: -.75rem;
+  top: -0.75rem;
   left: 1rem;
   background-color: var(--bg-color);
-  padding: 0 .25rem;
+  padding: 0 0.25rem;
   user-select: none;
 }
-legend>span{
+legend > span {
   cursor: pointer;
 }
 
-textarea{
+textarea {
   background-color: var(--bg-color);
-  height: fit-content;
-
+  width: 100%;
+  max-width: 40ch;
 }
 
-
-label{
+label {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   user-select: none;
   flex-grow: 1;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   margin: auto;
   box-shadow: 1px 1px 1px 1px black;
 }
 
-input[type="radio"]{
+input[type="radio"] {
   display: none;
 }
-label:has(input[type="radio"]:checked){
+label:has(input[type="radio"]:checked) {
   background-color: red;
   box-shadow: inset 1px 1px 1px 1px black;
 }
-
-
-
 
 .single-post {
   padding: 1rem;
@@ -96,7 +95,10 @@ label:has(input[type="radio"]:checked){
 .pasted {
   background-color: rgba(118, 119, 118, 0.558);
 }
-
+label:has(input#custom_text){
+  display: flex;
+  flex-wrap: wrap;
+}
 input#custom_text {
   width: 15ch;
   transition: width 0.6s ease;
@@ -108,6 +110,30 @@ input#custom_text:disabled {
   border: none;
   padding: 0;
   margin: 0;
+}
 
+form > button{
+  padding: 1rem;
+  font-weight: 900;
+}
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 3rem;
+  min-height: 10dvh;
+  background-color: rgb(36, 150, 244);
+}
+
+footer > *{
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+  display: grid;
+  align-items: center;
 }
 
