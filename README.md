@@ -20,7 +20,7 @@ Start typing your post in the text area, select if you want any separator (or tr
 
 In the output section you will see the original text splitted.
 
-By clicking on a paragraph it will be copied to the clipboard. Just go to 𝕏 and paste the text to post it. 
+By clicking a paragraph it will be copied to the clipboard. Just go to 𝕏 and paste the text to post it.
 
 ## Official solution as for September 2023
 
@@ -38,5 +38,5 @@ Of course it is! But if you feel like a little more caffeine could help me make 
 
 |||
 |-|-|
-|[![ARS $1000 - MercadoPago](/assets/img/githubbutton_sm_cortadito.svg)](https://mpago.la/2Tww49g)|Only for Argentina|
+|[![ARS $1000 - MercadoPago](./assets/img/githubbutton_sm_cortadito.svg)](https://mpago.la/2Tww49g)|Only for Argentina|
 |[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y3PK5HP)|Rest of the World|
