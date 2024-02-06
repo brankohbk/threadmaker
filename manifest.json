@@ -1,37 +1,38 @@
 {
-  "id":"My PWA",
+  "id":"Thread Maker",
   "start_url": "index.html",
-  "short_name": "PWA TEMPLATE",
-  "name": "PWA TEMPLATE",
+  "short_name": " 𝕏 Thread Maker",
+  "name": "Thread Maker for 𝕏",
+  "description": "This app lets you clip your posts (formerly tweets) to fit the 280 characters limit for free tier users on 𝕏 and build a thread.",
+  "categories": ["tools", "productivity", "social media", "worflow", "twitter", "blog"],
+  "lang": "en",
   "orientation": "portrait-primary",
   "display": "standalone",
-  "background_color": "#ad1400",
-  "theme_color": "#ad1400",
-  "lang": "es",
-  "description": "Esta es una descripción de lo que hace la WebApp.",
   "display_override":["window-controls-overlay"],
+  "background_color": "#2496f4",
+  "theme_color": "#2496f4",
   "screenshots":[
     {
-      "src": "img/icons/icon192.png",
+      "src": "assets/img/pwa/screenshots/screenshot1.png",
       "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "maskable"
+      "sizes": "952x948",
+      "label": "Preview of the form and several generated posts"
     }
   ],
   "icons": [{
-    "src": "img/icons/icon192.png",
+    "src": "assets/img/pwa/icons/icon192.png",
     "type": "image/png",
     "sizes": "192x192"
   }, {
-    "src": "img/icons/icon196.png",
+    "src": "assets/img/pwa/icons/icon196.png",
     "type": "image/png",
     "sizes": "196x196"
   }, {
-    "src": "img/icons/icon256.png",
+    "src": "assets/img/pwa/icons/icon256.png",
     "type": "image/png",
     "sizes": "256x256"
   }, {
-    "src": "img/icons/icon512.png",
+    "src": "assets/img/pwa/icons/icon512.png",
     "type": "image/png",
     "sizes": "512x512",
     "purpose": "maskable"
