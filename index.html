@@ -24,15 +24,26 @@
     <!--#endregion -->
     <link rel="stylesheet" href="./assets/styles/toastify.css" />
     <link rel="stylesheet" href="./assets/styles/reset.css" />
-    <link rel="stylesheet" href="./assets/styles/custom.css" />
+    <link rel="stylesheet" href="./assets/styles/custom.css" /><!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
+    <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+    
+    <!-- Load the element definition -->
+    <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
+    
   </head>
-
+  
   <body>
     <header>
-      <nav>
-        <img src="" alt="" />
-      </nav>
       <h1>Thread Maker for 𝕏</h1>
+      <nav>
+        <button popovertarget="tutorial">How to use?</button>
+        <div id="tutorial" popover>
+          <button onclick="tutorial.togglePopover()">&times;</button>
+          <article>
+            <zero-md src="README.md"></zero-md>
+          </article>
+        </div>
+      </nav>
     </header>
     <main>
       <form>
@@ -59,10 +70,6 @@
         <fieldset>
           <legend>
             Trail
-            <span
-              title="Select the text that will be added at the end of each clipped post."
-              >❓
-            </span>
           </legend>
           <label aria-roledescription="button" role="button">
             <input type="radio" name="trail" value="👇🏼" checked />
@@ -95,13 +102,13 @@
       </form>
 
       <section>
-        <h2>Output</h2>
+        <h2>Output:</h2>
         <div id="output-container"></div>
       </section>
     </main>
     <footer>
       <span>Branko HBK</span>
-      <span>| 2024 |</span>
+      <span>2024</span>
       <span>
         Liked it?
         <span>

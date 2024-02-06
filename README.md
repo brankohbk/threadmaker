@@ -1,4 +1,4 @@
-# 𝕏 Thread Maker
+# Thread Maker for 𝕏
 
 ## What?
 

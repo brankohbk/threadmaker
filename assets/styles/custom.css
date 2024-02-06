@@ -4,7 +4,7 @@
 }
 
 :root {
-  --bg-color: #ffffffff;
+  --bg-color: #ffffff;
 }
 
 body {
@@ -13,25 +13,37 @@ body {
   flex-direction: column;
   justify-content: space-between;
   font-family: Poppins;
+  scrollbar-color: red;
+  scrollbar-width: 0.25rem;
+}
+header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 main {
-  flex-grow: 1;
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
   padding: 1.5rem;
+  flex-grow: 1;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
 }
 
-h1 {
+h1,
+h2 {
   font-size: 2.5rem;
-  padding: 1rem 0 0 1.5rem;
   margin: 0;
+  text-decoration: underline wavy 0.05em;
+  text-underline-offset: 0.1em;
+}
+h2 {
+  font-size: 1.5rem;
 }
 
 /* Input form */
 form {
-  width: 100%;
   display: grid;
   gap: 1rem;
 }
@@ -86,20 +98,6 @@ label:has(input[type="radio"]:checked) {
   box-shadow: inset 1px 1px 1px 1px black;
 }
 
-.single-post {
-  padding: 1rem;
-  border: 1px solid black;
-  cursor: pointer;
-  user-select: none;
-}
-
-.copied {
-  background-color: rgba(82, 175, 6, 0.558);
-}
-
-.pasted {
-  background-color: rgba(118, 119, 118, 0.558);
-}
 label:has(input#custom_text) {
   display: flex;
   flex-wrap: wrap;
@@ -117,11 +115,72 @@ input#custom_text:disabled {
   margin: 0;
 }
 
-form > button {
-  padding: 1rem;
-  font-weight: 900;
+button {
+  padding: 0.5rem 1rem;
   cursor: pointer;
   user-select: none;
+}
+form > button {
+  font-weight: 900;
+  padding: 1rem;
+}
+
+/* Output */
+
+#output-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 30ch), 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+  counter-reset: count;
+}
+
+.single-post {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid black;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  counter-increment: count;
+  &::before {
+    content: "Click to copy post #" counter(count);
+    /* display: block; */
+    background-color: var(--bg-color);
+    height: 2rem;
+    padding: 0.25rem 0.5rem;
+    position: absolute;
+    top: -1rem;
+  }
+  /* &::after{
+    content: counter(count);
+  } */
+}
+
+.copied {
+  background-color: rgba(82, 175, 6, 0.558);
+  &::before {
+    content: "Copied!";
+    background-color: rgb(82, 175, 6);
+  }
+}
+
+.pasted {
+  background-color: rgba(118, 119, 118, 0.558);
+  &::before {
+    content: "Pasted";
+    background-color: #767676;
+    color: #fcfcfc;
+  }
+}
+
+.error {
+  background-color: rgba(175, 6, 6, 0.558);
+  &::before {
+    content: "ERROR. Could not copy.";
+    background-color: rgb(175, 6, 6);
+    color: #fcfcfc;
+  }
 }
 
 /* FOOTER */
@@ -142,4 +201,43 @@ footer > * {
   text-align: center;
   display: grid;
   align-items: center;
+}
+
+/* Popover */
+[popover] {
+  gap: 0.25rem;
+  flex-direction: column;
+  width: 80dvw;
+  height: 80dvh;
+  padding: 1.25rem;
+
+  /* Final state of the exit animation */
+  opacity: 0;
+  transform: scale(0, 0);
+
+  transition: opacity 0.7s, transform 0.7s, overlay 0.7s allow-discrete,
+    display 0.7s allow-discrete;
+
+  &:popover-open {
+    display: flex;
+    box-shadow: 0rem 0rem 1.5rem 0rem #767676;
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  button {
+    margin-left: auto;
+    font-size: 2rem;
+    line-height: 2rem;
+    padding: 0 0rem;
+    width: 2rem;
+    height: 2rem;
+    color: rgb(255, 0, 0);
+  }
+}
+
+@starting-style {
+  [popover]:popover-open {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
 }

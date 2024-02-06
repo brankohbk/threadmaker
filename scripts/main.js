@@ -45,18 +45,24 @@ function handleSubmit(event) {
   thread(formProps);
 }
 
-function copyPost(element) {
+async function copyPost(element) {
   // If not a post, do nothing.
   if (!element.classList.contains("single-post")) {
     return;
   }
 
   // Copy <p> text to clipboard
-  writeClipboardText(element.innerText);
+  let copyError = await writeClipboardText(element.innerText);
 
+  if(copyError){
   // Set class to copied.
   element.classList.remove("pasted");
-  element.classList.add("copied");
+  element.classList.add("error");
+  }else{
+    // Set class to copied.
+    element.classList.remove("pasted");
+    element.classList.add("copied");
+  }
 
   // When copying a new <p>, the previous ones should have a "pasted" class.
   getSiblings(element).forEach((sibling) => {
@@ -95,8 +101,8 @@ async function writeClipboardText(text) {
       gravity: "bottom",
       position: "right"
     }).showToast()
+    
   } catch (error) {
-    console.error(error.message);
     Toastify({
       text: `Cannot copy to clipboard.\nError: ${error.message}`,
       duration: -1,
@@ -107,6 +113,8 @@ async function writeClipboardText(text) {
         background: "red",
       },
     }).showToast();
+    console.error(error.message);
+    return new Error(error.message)
   }
 }
 
