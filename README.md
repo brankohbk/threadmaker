@@ -24,7 +24,7 @@ By clicking a paragraph it will be copied to the clipboard. Just go to 𝕏 and 
 
 ## Official solution as for September 2023
 
-[FAQ - Create a thread](https://help.twitter.com/en/using-x/create-a-thread)
+[𝕏 FAQ - Create a thread](https://help.twitter.com/en/using-x/create-a-thread)
 
 ## Do I need to register?
 
@@ -34,7 +34,7 @@ I'm thinking of adding a feature to allow users to save past threads, but it's n
 
 ## Is it free?
 
-Of course it is! But if you feel like a little more caffeine could help me make things faster, you can:
+Of course, it is! But a little more caffeine could help me make things faster, so it will be much appreciated if you:
 
 |||
 |-|-|

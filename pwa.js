@@ -8,26 +8,26 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-let installPromptEvent;
-window.addEventListener("beforeinstallprompt", event => {
-  event.preventDefault();
-  installPromptEvent = event;
-  showCustomInstallPrompt();
-});
+// let installPromptEvent;
+// window.addEventListener("beforeinstallprompt", event => {
+//   event.preventDefault();
+//   installPromptEvent = event;
+//   showCustomInstallPrompt();
+// });
 
-const installButton = document.getElementById("installPWA");
+// const installButton = document.getElementById("installPWA");
 
-installButton.addEventListener('click', ()=>{
-  if(installPromptEvent){
-    installPromptEvent.prompt();
-  }else{
-    alert("Sorry, you can't install this app on this device.")
-  }
-})
+// installButton.addEventListener('click', ()=>{
+//   if(installPromptEvent){
+//     installPromptEvent.prompt();
+//   }else{
+//     alert("Sorry, you can't install this app on this device.")
+//   }
+// })
 
-function showCustomInstallPrompt(){
-  // Render an HTML modal.
-}
+// function showCustomInstallPrompt(){
+//   // Render an HTML modal.
+// }
 
 
 // #region Background Sync. Fired when network is stable an batt in good level.
