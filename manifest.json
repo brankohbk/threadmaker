@@ -6,7 +6,7 @@
   "description": "This app lets you clip your posts (formerly tweets) to fit the 280 characters limit for free tier users on 𝕏 and build a thread.",
   "categories": ["tools", "productivity", "social media", "worflow", "twitter", "blog"],
   "lang": "en",
-  "orientation": "portrait-primary",
+  "orientation": "any",
   "display": "standalone",
   "display_override":["window-controls-overlay"],
   "background_color": "#2496f4",
