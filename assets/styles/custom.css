@@ -192,7 +192,11 @@ footer {
   gap: 1rem;
   padding: 1rem 3rem;
   min-height: 10dvh;
-  background-color: rgb(36, 150, 244);
+  background-color: #3EA4F4;
+  & a{
+    color: black;
+    text-underline-offset: .2em;
+  }
 }
 
 footer > * {
@@ -202,6 +206,8 @@ footer > * {
   display: grid;
   align-items: center;
 }
+
+
 
 /* Popover */
 [popover] {
