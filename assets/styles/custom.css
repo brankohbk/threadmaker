@@ -130,7 +130,7 @@ form > button {
 #output-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 30ch), 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 1rem 0;
   counter-reset: count;
 }
@@ -143,8 +143,9 @@ form > button {
   user-select: none;
   position: relative;
   counter-increment: count;
+  background-color: var(--bg-color);
   &::before {
-    content: "Click to copy post #" counter(count);
+    content: "Click to copy post #" counter(count)".";
     /* display: block; */
     background-color: var(--bg-color);
     height: 2rem;
@@ -152,32 +153,51 @@ form > button {
     position: absolute;
     top: -1rem;
   }
-  /* &::after{
-    content: counter(count);
-  } */
+  &::after{
+    content: "Char count: "attr(data-chars) ;
+    /* display: block; */
+    background-color: inherit;
+    height: 2rem;
+    padding: 0.25rem 0.5rem;
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+    /* border: 1px solid; */
+  }
 }
 
 .copied {
-  background-color: rgba(82, 175, 6, 0.558);
+  background-color: rgb(159, 210, 116);
   &::before {
     content: "Copied!";
+    background-color: rgb(82, 175, 6);
+  }
+  &::after {
     background-color: rgb(82, 175, 6);
   }
 }
 
 .pasted {
-  background-color: rgba(118, 119, 118, 0.558);
+  background-color: rgb(180, 180, 180);
   &::before {
     content: "Pasted";
+    background-color: #767676;
+    color: #fcfcfc;
+  }
+  &::after {
     background-color: #767676;
     color: #fcfcfc;
   }
 }
 
 .error {
-  background-color: rgba(175, 6, 6, 0.558);
+  background-color: rgb(210, 116, 116);
   &::before {
     content: "ERROR. Could not copy.";
+    background-color: rgb(175, 6, 6);
+    color: #fcfcfc;
+  }
+  &::after {
     background-color: rgb(175, 6, 6);
     color: #fcfcfc;
   }

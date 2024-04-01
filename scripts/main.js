@@ -9,6 +9,8 @@ const TRAIL_SPAN = document.getElementById("trail_length");
 const MAX_POST_LENGTH = 280; // Set by X.com https://help.twitter.com/en/using-x/how-to-post
 let trailLength = 0;
 
+let limiter = " "
+
 //#region Event Listeners
 Array.from(FORM.elements).forEach((element) => {
   element.addEventListener("input", handleInput);
@@ -121,6 +123,7 @@ async function writeClipboardText(text) {
 function createIndividualPost(text) {
   const POST = document.createElement("p");
   POST.classList.add("single-post");
+  POST.setAttribute("data-chars", text.length)
   POST.innerText = text;
   OUTPUT.appendChild(POST);
 }
@@ -134,12 +137,13 @@ function thread(data) {
   let start = 0;
   let end = POST_LENGTH;
   let individualPosts = [];
-
+  
   // Prevent splitting last word.
   while (start + POST_LENGTH <= fullPost.length) {
-    while (fullPost.charAt(end) != " ") {
+    while ( fullPost.charAt(end) != limiter) {
       end--;
     }
+    end ++
     let individualPost = fullPost.substring(start, end);
     individualPosts.push(individualPost);
     start = end;
@@ -151,11 +155,11 @@ function thread(data) {
   // Add trail.
   for (let index = 0; index < individualPosts.length; index++) {
     if (trail === "00/00") {
-      individualPosts[index] += ` ${index + 1}/${individualPosts.length}`;
+      individualPosts[index] += `${index + 1}/${individualPosts.length}`;
     }
     // Add trail (except for the last item)
     if (trail != "00/00" && index != individualPosts.length - 1) {
-      individualPosts[index] += " " + trail;
+      individualPosts[index] += "" + trail;
     }
   }
 
