@@ -9,7 +9,7 @@ const TRAIL_SPAN = document.getElementById("trail_length");
 const MAX_POST_LENGTH = 280; // Set by X.com https://help.twitter.com/en/using-x/how-to-post
 let trailLength = 0;
 
-let limiter = " "
+let delimiter = " "
 
 //#region Event Listeners
 Array.from(FORM.elements).forEach((element) => {
@@ -140,10 +140,10 @@ function thread(data) {
   
   // Prevent splitting last word.
   while (start + POST_LENGTH <= fullPost.length) {
-    while ( fullPost.charAt(end) != limiter) {
+    while ( fullPost.charAt(end) != delimiter) {
       end--;
     }
-    end ++
+    // end ++
     let individualPost = fullPost.substring(start, end);
     individualPosts.push(individualPost);
     start = end;
@@ -155,11 +155,11 @@ function thread(data) {
   // Add trail.
   for (let index = 0; index < individualPosts.length; index++) {
     if (trail === "00/00") {
-      individualPosts[index] += `${index + 1}/${individualPosts.length}`;
+      individualPosts[index] += ` ${index + 1}/${individualPosts.length}`;
     }
     // Add trail (except for the last item)
     if (trail != "00/00" && index != individualPosts.length - 1) {
-      individualPosts[index] += "" + trail;
+      individualPosts[index] += " " + trail;
     }
   }
 
