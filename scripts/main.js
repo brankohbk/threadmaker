@@ -54,11 +54,11 @@ async function copyPost(element) {
   // Copy <p> text to clipboard
   let copyError = await writeClipboardText(element.innerText);
 
-  if(copyError){
-  // Set class to copied.
-  element.classList.remove("pasted");
-  element.classList.add("error");
-  }else{
+  if (copyError) {
+    // Set class to copied.
+    element.classList.remove("pasted");
+    element.classList.add("error");
+  } else {
     // Set class to copied.
     element.classList.remove("pasted");
     element.classList.add("copied");
@@ -101,7 +101,7 @@ async function writeClipboardText(text) {
       gravity: "bottom",
       position: "right"
     }).showToast()
-    
+
   } catch (error) {
     Toastify({
       text: `Cannot copy to clipboard.\nError: ${error.message}`,
@@ -128,32 +128,38 @@ function createIndividualPost(text) {
 
 //#region Main Function
 function thread(data) {
-  let { post: fullPost, trail } = data;
   // Get the trail, trail length, post length.
-  // Divide post.length by (MAX_POST_LENGTH - trail.length)
-
+  let { post: fullPost, trail } = data;
   const POST_LENGTH = MAX_POST_LENGTH - (1 + trail.length);
-  const ESTIMATED_POSTS = Math.ceil(fullPost.length / POST_LENGTH);
+  let start = 0;
+  let end = POST_LENGTH;
   let individualPosts = [];
 
-  for (let index = 0; index < ESTIMATED_POSTS; index++) {
-    // Split text at same length
-    let start = index * POST_LENGTH;
-    let end = start + POST_LENGTH;
+  // Prevent splitting last word.
+  while (start + POST_LENGTH <= fullPost.length) {
+    while (fullPost.charAt(end) != " ") {
+      end--;
+    }
     let individualPost = fullPost.substring(start, end);
+    individualPosts.push(individualPost);
+    start = end;
+    end = start + POST_LENGTH;
+  }
+  let lastPost = fullPost.substring(start);
+  individualPosts.push(lastPost);
 
+  // Add trail.
+  for (let index = 0; index < individualPosts.length; index++) {
     if (trail === "00/00") {
-      individualPost += ` ${index + 1}/${ESTIMATED_POSTS}`;
+      individualPosts[index] += ` ${index + 1}/${individualPosts.length}`;
     }
     // Add trail (except for the last item)
-    if (trail != "00/00" && index != ESTIMATED_POSTS - 1) {
-      individualPost += " " + trail;
+    if (trail != "00/00" && index != individualPosts.length - 1) {
+      individualPosts[index] += " " + trail;
     }
-
-    individualPosts.push(individualPost);
   }
 
-  // Call function to create paragraphs with each Item
+  // Call function to create paragraphs with each Item.
   individualPosts.forEach((post) => {
     createIndividualPost(post);
   });
